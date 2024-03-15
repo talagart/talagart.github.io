@@ -8,7 +8,7 @@ $(document).ready(function() {
     // Wykonaj żądanie AJAX
     $.ajax({
       type: 'POST',
-      url: 'C:\Users\l\Documents\GitHub\talagart.github.io\contactform\contactform.php', // Adres URL, do którego wysyłamy dane formularza
+      url: 'contactform/contactform.php', // Adres URL, do którego wysyłamy dane formularza
       data: formData, // Dane formularza
       success: function(response) {
         if (response == 'OK') {
