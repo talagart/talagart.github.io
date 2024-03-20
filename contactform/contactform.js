@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var formData = new FormData(this);
 
     // Ustaw adres URL interfejsu API Gateway
-    var apiUrl = 'https://or1tlywqjj.execute-api.us-east-1.amazonaws.com/prod';
+    var apiUrl = 'https://9mi2typqz2.execute-api.us-east-1.amazonaws.com/prod';
 
     // Wyślij żądanie POST do interfejsu API Gateway
     fetch(apiUrl, {
