@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var formData = new FormData(this);
 
     // Ustaw adres URL interfejsu API Gateway
-    var apiUrl = 'https://tgsvt1e7vl.execute-api.us-east-1.amazonaws.com/prod';
+    var apiUrl = 'https://tgsvt1e7vl.execute-api.us-east-1.amazonaws.com/prod/formularz';
 
     // Wyślij żądanie POST do interfejsu API Gateway
     fetch(apiUrl, {
@@ -16,20 +16,27 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => {
       if (response.ok) {
         // Jeśli żądanie zostało zakończone sukcesem, wyczyść formularz i wyświetl komunikat sukcesu
-        document.getElementById('sendmessage').classList.add('show');
-        document.getElementById('errormessage').classList.remove('show');
+        var sendmessage = document.getElementById('sendmessage');
+        var errormessage = document.getElementById('errormessage');
+        if (sendmessage) sendmessage.classList.add('show');
+        if (errormessage) errormessage.classList.remove('show');
         document.getElementById('contactForm').reset(); // Wyczyść formularz
       } else {
         // Jeśli wystąpił błąd, wyświetl komunikat o błędzie
-        document.getElementById('sendmessage').classList.remove('show');
-        document.getElementById('errormessage').classList.add('show').textContent = 'Oops! Something went wrong. Please try again later.';
+        var errormessage = document.getElementById('errormessage');
+        if (errormessage) {
+          errormessage.textContent = 'Oops! Something went wrong. Please try again later.';
+          errormessage.classList.add('show');
+        }
       }
     })
     .catch(error => {
       // W przypadku błędu sieciowego, wyświetl komunikat o błędzie
-      document.getElementById('sendmessage').classList.remove('show');
-      document.getElementById('errormessage').classList.add('show').textContent = 'Oops! Something went wrong. Please check your network connection and try again.';
+      var errormessage = document.getElementById('errormessage');
+      if (errormessage) {
+        errormessage.textContent = 'Oops! Something went wrong. Please check your network connection and try again.';
+        errormessage.classList.add('show');
+      }
     });
   });
 });
-
