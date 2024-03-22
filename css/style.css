@@ -783,6 +783,9 @@ h6 {
   overflow: hidden;
   position: relative;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Wyśrodkowanie obrazka w pionie */
 }
 
 #portfolio .portfolio-item .portfolio-wrap:hover img {
