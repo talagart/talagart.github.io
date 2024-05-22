@@ -128,5 +128,40 @@
     }
   });
 
+  // Project Preview Modal
+  function openProjectPreview(title, date, author, image, content) {
+    $('#postTitle').text(title);
+    $('#postDate').text(date);
+    $('#postAuthor').text(author);
+    $('#postImage').attr('src', image);
+    $('#postContent').html(content);
+    $('#projectPreview').fadeIn('slow');
+  }
+
+  function closeProjectPreview() {
+    $('#projectPreview').fadeOut('slow');
+  }
+
+  // Close modal when clicking the close button
+  $(document).on('click', '.close', closeProjectPreview);
+
+  // Close modal when clicking outside the modal content
+  $(window).on('click', function(event) {
+    if ($(event.target).is('#projectPreview')) {
+      closeProjectPreview();
+    }
+  });
+
+  // Open modal with data from the clicked button
+  $(document).on('click', '.preview-button', function(event) {
+    event.preventDefault();
+    var title = $(this).data('title');
+    var date = $(this).data('date');
+    var author = $(this).data('author');
+    var image = $(this).data('image');
+    var content = $(this).data('content');
+    openProjectPreview(title, date, author, image, content);
+  });
+
 })(jQuery);
 
